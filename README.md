@@ -3,7 +3,7 @@ A Docker container based on rocker/shiny with added java jdk and additional R pa
 
 ## Configuration Steps
 
-Below are steps to setup the docker environment, tested on an M1 Macbook pro. Further configurations may be required for other machines/OS. 
+Below are steps to set up the docker environment, tested on an M1 Macbook pro. Further configurations may be required for other machines/OS. 
 
 1. Fork from [`OHDSI/ShinyDeploy`](https://github.com/OHDSI/ShinyDeploy) and `git clone` to a local repo
 2. `git clone` this repo to local
@@ -12,7 +12,10 @@ Below are steps to setup the docker environment, tested on an M1 Macbook pro. Fu
    cd Broadsea-Shiny
    ln -s [PATH TO ShinyDeploy] .
    ```
-4. Copy your local `postgresql` driver under the `ShinyDeploy` directory; you can also use `DatabaseConnector::downloadJdbcDrivers(dbms = "postgresql", pathToDriver = [PATH TO ShinyDeploy]` to download the driver
+4. Copy your local `postgresql` driver under the `ShinyDeploy` directory. You can also use the following `R` command to download the driver using the `DatabaseConnector` package:
+   ```{r}
+   DatabaseConnector::downloadJdbcDrivers(dbms = "postgresql", pathToDriver = [PATH TO ShinyDeploy])
+   ```
 5. Edit the `docker-compose.yaml` file accordingly:
     * change `postgresql-42.2.18.jar` in the last line to the file name of your `postgresql` driver
     * the `platform: linux/amd64` seems to be required for an M1 Mac; you may not need it (or need another command) for a different machine/OS
