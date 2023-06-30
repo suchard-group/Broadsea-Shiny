@@ -5,8 +5,10 @@ services:
   broadsea-shiny:
     build: .
     image: ohdsi/broadsea-shiny
+    platform: linux/amd64
     ports:
       - "80:3838"
     volumes:
       - ./ShinyDeploy/:/srv/shiny-server/:ro
       - ./ShinyDeploy/.Renviron:/home/shiny/.Renviron:ro
+      - ./ShinyDeploy/postgresql-42.2.18.jar:/home/shiny/postgresql-42.2.18.jar:ro
