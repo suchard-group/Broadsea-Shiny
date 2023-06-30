@@ -18,7 +18,7 @@ Below are steps to set up the docker environment, tested on an M1 Macbook pro. F
    ```
 5. Edit the `docker-compose.yaml` file accordingly:
     * change `postgresql-42.2.18.jar` in the last line to the file name of your `postgresql` driver
-    * the `platform: linux/amd64` seems to be required for an M1 Mac; you may not need it (or need another command) for a different machine/OS
+    * the `platform: linux/amd64` flag seems to be required for an M1 Mac; you may not need it (or need another command) for a different machine/OS
 6. Create a `.Renviron` file based on the `.Renviron.template`, something like:
    ```
    shinydbDatabase="shinydb"
